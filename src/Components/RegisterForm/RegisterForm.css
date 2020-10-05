@@ -1,0 +1,17 @@
+.logo{
+  width:200px;
+  margin:auto;
+  padding:20px;
+}
+
+.register-form{
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    width: 500px;
+    margin: auto;
+    padding: 30px;
+}
+.register-form input{
+   
+    
+}

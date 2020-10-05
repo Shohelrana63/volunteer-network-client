@@ -1,5 +1,7 @@
-import { Container } from '@material-ui/core';
+import { Container, Grid } from '@material-ui/core';
 import React from 'react';
+import volunteerImages from '../../fakeData/fakeData';
+import EventCard from '../EventCard/EventCard';
 import Header from '../Header/Header';
 import './Home.css';
 
@@ -15,6 +17,15 @@ const Home = () => {
                         <button style={{ borderTopRightRadius: '5px', borderBottomRightRadius: '5px' }}
                             className='search-button' type="submit">Search</button>
                     </div>
+                </div>
+                <div>
+                    <Grid container item xs={12} spacing='5' justify='center' style={{ textAlign: 'center', margin: 'auto' }}>
+
+                        {
+                            volunteerImages.map(eventCard => <EventCard eventCard={eventCard}></EventCard>)
+                        }
+
+                    </Grid>
                 </div>
             </Container>
         </div>
