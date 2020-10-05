@@ -1,11 +1,44 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../logos/Group 1329.png';
 import googleLogo from '../../logos/google.png';
 import './Login.css';
+import * as firebase from "firebase/app";
+import "firebase/auth";
+import firebaseConfig from './firebase.config';
+import { UserContext } from '../../App';
+import { useHistory, useLocation } from 'react-router-dom';
+
 
 const Login = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const history = useHistory();
+    const location = useLocation();
+
+    let { from } = location.state || { from: { pathname: "/" } };
+    if (firebase.apps.length === 0) {
+        firebase.initializeApp(firebaseConfig);
+    }
+
     const googleSignInHandler = () => {
 
+
+        const provider = new firebase.auth.GoogleAuthProvider();
+        firebase.auth().signInWithPopup(provider).then(function (result) {
+
+            const { displayName, email } = result.user;
+            const signInUser = { name: displayName, email };
+            // console.log(signinUser);
+            setLoggedInUser(signInUser);
+            history.replace(from);
+            history.push('/registerForm');
+
+        }).catch(function (error) {
+            // Handle Errors here.
+
+            var errorMessage = error.message;
+            console.log(errorMessage);
+
+        });
 
     }
     return (

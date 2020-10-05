@@ -22,7 +22,11 @@ const Home = () => {
                     <Grid container item xs={12} spacing='5' justify='center' style={{ textAlign: 'center', margin: 'auto' }}>
 
                         {
-                            volunteerImages.map(eventCard => <EventCard eventCard={eventCard}></EventCard>)
+                            volunteerImages.map(eventCard =>
+                                <Grid item >
+                                    <EventCard eventCard={eventCard}></EventCard>
+                                </Grid>)
+
                         }
 
                     </Grid>

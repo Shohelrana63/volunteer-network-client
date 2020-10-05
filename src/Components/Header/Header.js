@@ -5,9 +5,12 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import logo from '../../logos/Group 1329.png';
 import './Header.css';
 
+
 const Header = () => {
+
     return (
         <div className="header">
+
             <Container>
                 <Navbar>
                     <Link to="/">
@@ -24,6 +27,7 @@ const Header = () => {
                         <Link to="/" >
                             <Button className="link admin-btn ml-5" variant="contained"> Admin</Button>
                         </Link>
+
                     </Nav>
                 </Navbar>
             </Container>
