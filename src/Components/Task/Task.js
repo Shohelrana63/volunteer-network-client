@@ -1,28 +1,27 @@
 import { Grid } from '@material-ui/core';
 import taskImage from '../../images/extraVolunteer.png';
-import React from 'react';
+import React, { useState } from 'react';
 import './Task.css';
 import { Container } from 'react-bootstrap';
 
 const Task = (props) => {
-    const { date, event } = props.eventData;
-    const cancelHandler = (id) => {
+
+    const { date, event, _id } = props.eventData;
+    const handleClick = (id) => {
         fetch(`http://localhost:5000/delete/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-                id: id
-            }
+            method: 'DELETE'
         })
             .then(res => res.json())
             .then(result => {
-                console.log(result);
+                if (result) {
+                    alert("delete successfully")
+                    props.handleDelete()
+                }
             })
     }
     return (
         <div>
-            {/* <p>event{event}</p>
-            <p>date{date}</p> */}
+
             <Container>
                 <Grid container item xs={11} spacing='3' style={{ margin: 'auto', marginTop: '5px' }}>
                     <Grid container item xs={10} sm={5} justify='space-around'
@@ -34,7 +33,7 @@ const Task = (props) => {
                             <h4>{event}</h4>
                             <h5>{date}</h5>
                             <div style={{ textAlign: 'right', marginTop: '70px' }}>
-                                <button onClick={() => cancelHandler(event._id)} className='cancel-btn'>
+                                <button onClick={() => handleClick(_id)} className='cancel-btn'>
                                     cancel
                                     </button>
                             </div>

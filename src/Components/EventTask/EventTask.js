@@ -10,13 +10,17 @@ import Task from '../Task/Task';
 
 const EventTask = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
-
+    const [del, setDel] = useState(false);
     const [task, setTask] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/volunteers')
+        fetch('https://volunteer-network-baig.herokuapp.com/volunteers')
             .then(res => res.json())
             .then(data => setTask(data))
     }, [])
+
+    const handleDelete = () => {
+        setDel(!del)
+    }
 
     return (
         <div className="header">
@@ -35,7 +39,7 @@ const EventTask = () => {
                 </Navbar>
                 <div>
                     {
-                        task.map(eventData => <Task eventData={eventData}></Task>)
+                        task.map(eventData => <Task eventData={eventData} handleDelete={handleDelete}></Task>)
                     }
                 </div>
             </Container>

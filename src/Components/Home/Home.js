@@ -12,7 +12,7 @@ const Home = () => {
     const [volunteers, setVolunteers] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/volunteersEvents')
+        fetch('https://volunteer-network-baig.herokuapp.com/volunteersEvents')
             .then(res => res.json())
             .then(data => setVolunteers(data))
     }, [])
