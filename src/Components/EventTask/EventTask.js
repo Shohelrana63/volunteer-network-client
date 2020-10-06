@@ -16,7 +16,7 @@ const EventTask = () => {
         fetch('https://volunteer-network-baig.herokuapp.com/volunteers')
             .then(res => res.json())
             .then(data => setTask(data))
-    }, [])
+    }, [del])
 
     const handleDelete = () => {
         setDel(!del)
