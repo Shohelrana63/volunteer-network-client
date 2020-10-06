@@ -7,10 +7,13 @@ import "firebase/auth";
 import firebaseConfig from './firebase.config';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+
 
 
 const Login = () => {
-    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [loggedInUser, setLoggedInUser, volunteers, setVolunteers] = useContext(UserContext);
+
     const history = useHistory();
     const location = useLocation();
 
@@ -20,8 +23,6 @@ const Login = () => {
     }
 
     const googleSignInHandler = () => {
-
-
         const provider = new firebase.auth.GoogleAuthProvider();
         firebase.auth().signInWithPopup(provider).then(function (result) {
 
@@ -33,8 +34,6 @@ const Login = () => {
             history.push('/registerForm');
 
         }).catch(function (error) {
-            // Handle Errors here.
-
             var errorMessage = error.message;
             console.log(errorMessage);
 
@@ -44,15 +43,28 @@ const Login = () => {
     return (
 
         <div>
+
             <div className="logo">
-                <img style={{ height: '60px' }} src={logo} alt="" />
+                <Link to='/'>
+                    <img style={{ height: '60px' }} src={logo} alt="" />
+                </Link>
             </div>
-            <div className="google-form">
-                <h3 style={{ textAlign: 'center' }}>Login With</h3>
-                <div
-                    onClick={googleSignInHandler} style={{ cursor: "pointer" }} className="google">
-                    <img style={{ width: "30px", height: "30px", marginRight: "25px" }} src={googleLogo} alt="" />
-                    <p style={{ textAlign: 'center' }}>Continue with Google</p>
+
+            <div className="login-box">
+                <div className="google-form">
+                    <h3 style={{ textAlign: 'center' }}>Login With</h3>
+                    <div
+                        onClick={googleSignInHandler} style={{ cursor: "pointer" }} className="google">
+                        <img style={{ width: "30px", height: "30px", marginRight: "25px" }} src={googleLogo} alt="" />
+                        <p style={{ textAlign: 'center' }}>Continue with Google</p>
+                    </div>
+                    <div>
+                    </div>
+
+                    <span>Don't have an account ?</span>
+
+                    <span>Create an account? </span>
+
                 </div>
             </div>
         </div>

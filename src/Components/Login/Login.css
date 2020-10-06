@@ -1,9 +1,12 @@
-
+.login-box{
+    width: 570px;
+    margin: auto;
+}
 .google-form{
     border: 1px solid lightgray;
     border-radius: 3px;
-    width: 570px;
-    margin: auto;
+    width: 457px;
+    
     padding: 30px;
 }
 .google {

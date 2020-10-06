@@ -23,7 +23,7 @@ const EventCard = (props) => {
                         image={img}
                         title="Contemplative Reptile"
                     />
-                    <CardContent >
+                    <CardContent style={{ background: '#FFBD3E' }} >
                         <Typography gutterBottom >
                             {title}
                         </Typography>

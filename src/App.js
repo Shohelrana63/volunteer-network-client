@@ -10,6 +10,7 @@ import './App.css';
 import EventTask from './Components/EventTask/EventTask';
 import Home from './Components/Home/Home';
 import Login from './Components/Login/Login';
+import NotFound from './Components/NotFound/NotFound';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import RegisterForm from './Components/RegisterForm/RegisterForm';
 
@@ -18,6 +19,7 @@ export const UserContext = createContext();
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({})
+  // const [volunteers, setVolunteers] = useState([]);
   return (
     <div>
       <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
@@ -35,10 +37,13 @@ function App() {
               <RegisterForm></RegisterForm>
             </PrivateRoute>
 
-            <Route exact path="/task">
+            <PrivateRoute exact path="/task">
               <EventTask></EventTask>
-            </Route>
+            </PrivateRoute>
 
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
           </Switch>
         </Router>
       </UserContext.Provider>
